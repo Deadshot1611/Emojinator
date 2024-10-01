@@ -69,7 +69,7 @@ def get_prediction(user_input: str):
     return {"response": response}
 ```
 For more detailed instructions, check the [official FastAPI documentation](https://fastapi.tiangolo.com/).
-⚙️ ###**Setting Up the Project Locally**
+### ⚙️ **Setting Up the Project Locally**
 To contribute to Emojinator, follow these steps to set up the project locally:
 
 1. **Fork the Repository**:
@@ -98,5 +98,5 @@ git push origin feature/your-feature
 ```
 6. Open a Pull Request:
 Once your feature is complete, open a pull request from your branch to the main branch of the original repository.
-📝 ##**Code of Conduct**
+## 📝 **Code of Conduct**
 Please be respectful of others when contributing, and adhere to the Code of Conduct when interacting with the community.
