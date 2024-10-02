@@ -7,7 +7,7 @@ from mistralai import Mistral
 st.set_page_config(page_title="Emojinator", layout="centered")
 
 # Mistral API configuration
-client = Mistral(api_key=os.environ["MISTRAL_API_KEY"])
+client = Mistral(api_key="KwXiwRpaLKDOVBS9hhmmjaXb0t3P18PH")
 model = "mistral-large-2407"  # Using small model for faster responses
 
 def mistral_api_call(messages):
@@ -46,6 +46,12 @@ st.title("🤖 Emojinator: Your Witty Companion")
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
+    
+# Greetings
+    st.session_state.messages.append({
+        "role": "assistant",
+        "content": f"Welcome, human! Emojinator is here to add some extra sparkle to your day! ✨"
+    })
 
 # Display chat messages from history
 for message in st.session_state.messages:
