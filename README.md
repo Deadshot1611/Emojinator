@@ -2,6 +2,10 @@
 
 **Emojinator** is a fun, witty chatbot that generates short and humorous responses to user inputs using emojis. This project uses advanced language models to analyze user inputs and generate creative responses, adding a playful touch to the conversation with emoji suggestions.
 
+
+[Visit the live app here!](https://deadshot2003-emojinator.hf.space)
+
+
 ## 📋 What Does Emojinator Do?
 
 - Accepts user input and analyzes the sentiment or theme.
