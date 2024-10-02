@@ -89,7 +89,23 @@ with st.expander("🎯 Did You Know?", expanded=False):
     "An emoji film titled *The Emoji Movie* was released in 2017, featuring the adventures of emojis inside a smartphone.",
     "There are even emoji-only messaging apps, such as Emojli, where users communicate exclusively with emojis!",
     "The 'Fire' 🔥 emoji became widely associated with expressing excitement or something being 'cool' or 'awesome.'",
-    "The 'Pistol' emoji 🔫 was changed to a water gun by major tech companies in 2016 in response to anti-violence campaigns."
+    "The 'Pistol' emoji 🔫 was changed to a water gun by major tech companies in 2016 in response to anti-violence campaigns.",
+    "In 2015, Unicode added skin tone options for emojis.",
+    "The 'Folded Hands' emoji 🙏 is often seen as both prayer and a high-five.",
+    "The 'Person Shrugging' emoji 🤷‍♀️ represents uncertainty or indifference.",
+    "Over 250 flags are available as emoji, covering most countries.",
+    "The 'Grinning Face with Sweat' emoji 😅 is used to show nervousness or awkwardness.",
+    "The taco emoji 🌮 was added after a 2015 petition.",
+    "In 2017, gender-neutral emojis were introduced for inclusivity.",
+    "The 'Pile of Poo' emoji 💩 is often used humorously.",
+    "The 'Handshake' emoji 🤝 now offers different skin tones for each hand.",
+    "The 'Heart on Fire' emoji ❤️‍🔥, added in 2020, shows passionate love.",
+    "Emojis can be used in some password systems.",
+    "Emojis started as pixelated icons but became more detailed over time.",
+    "In 2019, Unicode added accessibility emojis, like guide dogs and prosthetics.",
+    "The 'Cherry Blossom' emoji 🌸 is very popular in Japan.",
+    "The 'Rocketship' emoji 🚀 often signals a price increase in finance."
+
 ]
 
     for fact in emoji_facts:
