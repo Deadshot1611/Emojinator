@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.chat-container {
+    flex: 3;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+#chat-box {
+    flex: 1;
+    padding: 10px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #ddd;
+}
+
+#user-input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+#user-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#send-btn {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background-color: #45a049;
+}
+
+.facts-container {
+    flex: 1;
+    margin-left: 20px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow-y: auto;
+    height: 500px;
+}
+
+.facts-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#fun-facts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fact-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+}
+
+.message {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.assistant {
+    justify-content: flex-start;
+}
+
+.message-content {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.user .message-content {
+    background-color: #DCF8C6;
+}
+
+.assistant .message-content {
+    background-color: #EFEFEF;
+}
