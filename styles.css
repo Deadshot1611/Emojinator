@@ -6,124 +6,193 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f0f0f0;
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .main-container {
-    display: flex;
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
+    display: flex;
+    gap: 20px;
+    height: 80vh;
 }
 
 .chat-container {
-    flex: 3;
-    background-color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 2;
+    background-color: #fff;
     border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 .header {
     background-color: #4CAF50;
     color: white;
-    padding: 10px;
-    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
 }
 
 #chat-box {
     flex: 1;
-    padding: 10px;
-    overflow-y: scroll;
-    border-bottom: 1px solid #ddd;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    margin-bottom: 15px;
+    max-width: 80%;
+}
+
+.message.user {
+    align-self: flex-end;
+}
+
+.message-content {
+    padding: 10px 15px;
+    border-radius: 18px;
+    display: inline-block;
+}
+
+.user .message-content {
+    background-color: #dcf8c6;
+}
+
+.assistant .message-content {
+    background-color: #f0f0f0;
 }
 
 #user-input-container {
     display: flex;
-    padding: 10px;
-    border-top: 1px solid #ddd;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e0e0e0;
 }
 
 #user-input {
     flex: 1;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 20px;
+    font-size: 16px;
 }
 
 #send-btn {
-    padding: 10px 20px;
-    margin-left: 10px;
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 4px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 20px;
     cursor: pointer;
-}
-
-#send-btn:hover {
-    background-color: #45a049;
+    font-size: 16px;
 }
 
 .facts-container {
     flex: 1;
-    margin-left: 20px;
-    background-color: white;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
     border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-    height: 500px;
+    display: flex;
+    flex-direction: column;
 }
 
 .facts-container h2 {
-    text-align: center;
-    margin-bottom: 10px;
+    color: #4CAF50;
+    margin-bottom: 15px;
+    font-size: 18px;
 }
 
 #fun-facts-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    overflow-y: auto;
 }
 
-.fact-card {
+.fact-item {
     background-color: #f9f9f9;
-    padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-size: 0.9rem;
+    padding: 12px;
+    font-size: 14px;
 }
 
-.message {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 6px;
 }
 
-.message.user {
-    justify-content: flex-end;
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
 }
 
-.message.assistant {
-    justify-content: flex-start;
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
 }
 
-.message-content {
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 70%;
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
-.user .message-content {
-    background-color: #DCF8C6;
+/* Media Queries */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .chat-container,
+    .facts-container {
+        flex: none;
+        width: 100%;
+    }
+
+    .chat-container {
+        height: 70vh;
+    }
+
+    .facts-container {
+        order: 2;
+        max-height: 30vh;
+    }
 }
 
-.assistant .message-content {
-    background-color: #EFEFEF;
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .header {
+        font-size: 18px;
+    }
+
+    #user-input {
+        font-size: 14px;
+    }
+
+    #send-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
 }
