@@ -1,3 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -5,194 +10,150 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #1c1c1c; /* Dark background for a futuristic feel */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    height: 100vh;
 }
 
 .main-container {
-    width: 100%;
-    max-width: 1200px;
     display: flex;
-    gap: 20px;
-    height: 80vh;
+    width: 90%;
+    max-width: 1200px;
 }
 
 .chat-container {
-    flex: 2;
-    background-color: #fff;
+    flex: 3;
+    background-color: #2c2c2c; /* Darker background for chat container */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
     border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .header {
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Green header */
     color: white;
-    padding: 15px;
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
+    padding: 15px; /* Increased padding for better spacing */
+    text-align: center;
+    font-size: 1.5rem; /* Larger font size */
 }
 
-.header img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
 
 #chat-box {
     flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.message {
-    margin-bottom: 15px;
-    max-width: 80%;
-}
-
-.message.user {
-    align-self: flex-end;
-}
-
-.message-content {
-    padding: 10px 15px;
-    border-radius: 18px;
-    display: inline-block;
-}
-
-.user .message-content {
-    background-color: #dcf8c6;
-}
-
-.assistant .message-content {
-    background-color: #f0f0f0;
+    padding: 10px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #444; /* Darker border color */
 }
 
 #user-input-container {
     display: flex;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-top: 1px solid #e0e0e0;
+    padding: 10px;
+    border-top: 1px solid #444; /* Darker border color */
+    background-color: #3a3a3a; /* Dark background for input area */
 }
 
 #user-input {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    font-size: 16px;
+    border: 1px solid #666; /* Light border for input */
+    border-radius: 4px;
+    background-color: #ffffff; /* Dark background for input */
+    color: white; /* White text for input */
+    transition: background-color 0.3s ease; /* Smooth transition on focus */
+}
+
+#user-input:focus {
+    outline: none; /* Remove default outline */
+    background-color: #555; /* Lighter background on focus */
 }
 
 #send-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
     padding: 10px 20px;
     margin-left: 10px;
-    border-radius: 20px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition for hover effects */
+}
+
+#send-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
 }
 
 .facts-container {
     flex: 1;
-    background-color: #fff;
+    margin-left: 20px;
+    background-color: #2c2c2c; /* Darker background for facts container */
+    padding: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
     border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
+    height: 500px; /* Fixed height for facts container */
 }
 
 .facts-container h2 {
-    color: #4CAF50;
-    margin-bottom: 15px;
-    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: white; /* Change heading color to white */
 }
 
 #fun-facts-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    overflow-y: auto;
+    gap: 10px; /* Space between fact cards */
 }
 
-.fact-item {
-    background-color: #f9f9f9;
+.fact-card {
+    background-color: #3a3a3a; /* Dark background for fact cards */
+    padding: 15px;
     border-radius: 8px;
-    padding: 12px;
-    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for cards */
+    font-size: 0.9rem;
+    color: white; /* Change text color to white */
+    transition: transform 0.3s ease; /* Transition for hover effects */
 }
 
-/* Scrollbar Styles */
-::-webkit-scrollbar {
-    width: 6px;
+.fact-card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover for pop-up effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
+.message {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 3px;
+.message.user {
+    justify-content: flex-end; /* Align user messages to the right */
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
+.message.assistant {
+    justify-content: flex-start; /* Align assistant messages to the left */
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    .main-container {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .chat-container,
-    .facts-container {
-        flex: none;
-        width: 100%;
-    }
-
-    .chat-container {
-        height: 70vh;
-    }
-
-    .facts-container {
-        order: 2;
-        max-height: 30vh;
-    }
+.message-content {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%; /* Limit message width */
 }
 
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
+.user .message-content {
+    background-color: #2E7D32; /* Darker green for user messages */
+    color: white; /* White text for user messages */
+}
 
-    .header {
-        font-size: 18px;
-    }
-
-    #user-input {
-        font-size: 14px;
-    }
-
-    #send-btn {
-        padding: 8px 15px;
-        font-size: 14px;
-    }
+.assistant .message-content {
+    background-color: #EFEFEF; /* Light gray for assistant messages */
+    color: #333; /* Dark text for better readability */
 }
