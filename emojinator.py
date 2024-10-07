@@ -1,44 +1,43 @@
 import streamlit as st
+import google.generativeai as genai
 import random
-import os
-from mistralai import Mistral
 
 # Page configuration
 st.set_page_config(page_title="Emojinator", layout="centered")
 
-# Mistral API configuration
-client = Mistral(api_key=os.environ["MISTRAL_API_KEY"])
-model = "mistral-large-2407"  # Using small model for faster responses
+# Configure Gemini API
+genai.configure(api_key="Your Api Key")
 
-def mistral_api_call(messages):
-    chat_response = client.chat.complete(
-        model=model,
-        messages=messages,
-        temperature=0.9,    # Higher temperature for more creative responses
-        max_tokens=150,     # Increased slightly for more complete responses
-        top_p=0.95          # Slightly higher top_p for more varied vocabulary
-    )
-    return chat_response.choices[0].message.content
+# Initialize the model
+model = genai.GenerativeModel('gemini-pro')
 
+# System prompt for consistent personality
 SYSTEM_PROMPT = """You are Emojinator, a witty and sarcastic chatbot with a great sense of humor. 
 Your responses should be clever, playful, and sometimes use puns. 
-You love using emojis to enhance your witty remarks.
+You love using emojis to enhance your witty remarks. 
 Keep responses concise but impactful - aim for one or two sentences that pack a punch!"""
 
-@st.cache_data
 def predict_emoji(text):
-    messages = [
-        {"role": "system", "content": "You are an emoji expert. Respond with only a single emoji that best matches the emotion or theme of the text."},
-        {"role": "user", "content": text}
-    ]
-    return mistral_api_call(messages)
+    """Generate a single emoji based on the input text."""
+    try:
+        response = model.generate_content(
+            f"Respond with only a single emoji that best matches the emotion or theme of this text: {text}"
+        )
+        return response.text.strip()
+    except Exception as e:
+        st.error(f"Error generating emoji: {str(e)}")
+        return "🤔"
 
 def generate_response(user_input, emoji):
-    messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": f"Make a witty response to this, using the emoji {emoji}: {user_input}"}
-    ]
-    return mistral_api_call(messages)
+    """Generate a witty response using the provided emoji."""
+    try:
+        response = model.generate_content(
+            f"{SYSTEM_PROMPT}\nMake a witty response to this, using the emoji {emoji}: {user_input}"
+        )
+        return response.text.strip()
+    except Exception as e:
+        st.error(f"Error generating response.....")
+        return "Seems my wit circuits are temporarily offline! Let me reboot those neurons..."
 
 # Streamlit app
 st.title("🤖 Emojinator: Your Witty Companion")
@@ -46,17 +45,16 @@ st.title("🤖 Emojinator: Your Witty Companion")
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
+    # Add welcome message
+    st.session_state.messages.append({
+        "role": "assistant",
+        "content": "Welcome, human! Emojinator is here to add some extra sparkle to your day! ✨"
+    })
 
 # Display chat messages from history
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-
-# Greetings
-    st.session_state.messages.append({
-        "role": "assistant",
-        "content": f"Welcome, human! Emojinator is here to add some extra sparkle to your day! ✨"
-    })
 
 # User input
 if prompt := st.chat_input("Say something, I dare you! 😏"):
@@ -68,14 +66,14 @@ if prompt := st.chat_input("Say something, I dare you! 😏"):
 
     # Generate emoji and response
     with st.chat_message("assistant"):
-        message_placeholder = st.empty()
-        message_placeholder.text("🤔")
-        emoji = predict_emoji(prompt)
-        message_placeholder.text("✍️")
-        response = generate_response(prompt, emoji)
-        message_placeholder.markdown(f"{response} {emoji}")
+        with st.spinner("🤔 Computing witty response..."):
+            emoji = predict_emoji(prompt)
+            response = generate_response(prompt, emoji)
+            full_response = f"{response} {emoji}"
+            st.markdown(full_response)
+            
     # Add assistant response to history
-    st.session_state.messages.append({"role": "assistant", "content": f"{response} {emoji}"})
+    st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 # Fun facts in an expander
 with st.expander("🎯 Did You Know?", expanded=False):
@@ -111,8 +109,7 @@ with st.expander("🎯 Did You Know?", expanded=False):
     "In 2019, Unicode added accessibility emojis, like guide dogs and prosthetics.",
     "The 'Cherry Blossom' emoji 🌸 is very popular in Japan.",
     "The 'Rocketship' emoji 🚀 often signals a price increase in finance."
-
 ]
-
-    for fact in emoji_facts:
-        st.info(fact)
+    
+    # Display a random fact each time
+    st.info(random.choice(emoji_facts))
