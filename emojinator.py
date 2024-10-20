@@ -7,7 +7,7 @@ from mistralai import Mistral
 st.set_page_config(page_title="Emojinator", layout="centered")
 
 # Mistral API configuration
-client = Mistral(api_key="W8MVwKKiHl5hAeMY3XJ0wlBHZm0SMk4f")
+client = Mistral(api_key=os.environ["MISTRAL_API_KEY"])
 model = "mistral-large-2407"  # Using small model for faster responses
 
 def mistral_api_call(messages):
