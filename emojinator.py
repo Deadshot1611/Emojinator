@@ -7,16 +7,35 @@ from mistralai import Mistral
 st.set_page_config(page_title="Emojinator", layout="centered")
 
 # Mistral API configuration
-client = Mistral(api_key="KwXiwRpaLKDOVBS9hhmmjaXb0t3P18PH")
+client = Mistral(api_key="W8MVwKKiHl5hAeMY3XJ0wlBHZm0SMk4f")
 model = "mistral-large-2407"  # Using small model for faster responses
 
 def mistral_api_call(messages):
+    user_input = messages[-1]["content"]
+    
+    if len(user_input) < 20:
+        # Short inputs: higher creativity
+        temperature = 1.0
+        max_tokens = 100  # Slightly shorter responses
+        top_p = 0.95
+    elif len(user_input) > 50:
+        # Longer inputs: lower creativity and more focused response
+        temperature = 0.7
+        max_tokens = 200  # Allow more complete responses
+        top_p = 0.9
+    else:
+        # Standard responses
+        temperature = 0.85
+        max_tokens = 150  # Standard length
+        top_p = 0.92
+    
+    # Call the Mistral API with these parameters
     chat_response = client.chat.complete(
         model=model,
         messages=messages,
-        temperature=0.9,    # Higher temperature for more creative responses
-        max_tokens=150,     # Increased slightly for more complete responses
-        top_p=0.95          # Slightly higher top_p for more varied vocabulary
+        temperature=temperature,
+        max_tokens=max_tokens,
+        top_p=top_p
     )
     return chat_response.choices[0].message.content
 
