@@ -1,3 +1,5 @@
 mistralai==1.1.0
 streamlit==1.39.0
 python-dotenv
+fastapi
+uvicorn
