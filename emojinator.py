@@ -77,6 +77,12 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+# Greetings
+    st.session_state.messages.append({
+        "role": "assistant",
+        "content": f"Welcome, human! Emojinator is here to add some extra sparkle to your day! ✨"
+    })
+
 # User input
 if prompt := st.chat_input("Say something, I dare you! 😏"):
     # Display user message
